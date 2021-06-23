@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-pagina1',
   templateUrl: './pagina1.component.html',
@@ -14,6 +15,7 @@ export class Pagina1Component implements OnInit, OnChanges, DoCheck,
   }
 
   nombre: string = "Gio";
+  segundos: number = 0;
 
 
 
@@ -41,6 +43,9 @@ export class Pagina1Component implements OnInit, OnChanges, DoCheck,
 
   ngOnInit(): void {
     console.log('ngOnInit')
+   interval(10).subscribe(i => {
+     this.segundos = i;
+   } )
   }
 
   guardar(){
